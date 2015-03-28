@@ -214,8 +214,6 @@ section#main role="main"
                       .col-sm-6
                         = s.select :skill, @skill_lists.collect {|c| [c.name, c.name]}, {prompt: 'Select skill'}, class: 'form-control', placeholder: "Type skill here"
                       .col-sm-6.no-padding
-                        .col-sm-6.pl5.pr5
-                          = s.submit 'Verify', class: "btn btn-success btn-block"
                         .col-sm-6.pl5
                           = s.submit 'Add', class: "btn btn-success btn-block"
                 br
@@ -227,4 +225,11 @@ section#main role="main"
                           | x
                         strong
                           =sk.skill
+                br
+                = form_for @skill, url: verify_student_skills_path, method: :post do |s|
+                  .row
+                    .col-sm-8.col-sm-offset-2
+                      .col-sm-6.no-padding
+                        .col-sm-6.pl5.pr5
+                          = s.submit 'Verify', class: "btn btn-success btn-block"
 == render 'students/matched_company'              
